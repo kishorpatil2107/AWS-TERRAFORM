@@ -58,6 +58,7 @@ resource "aws_security_group" "my_security_group" {
 
 # EC2 Instance
 resource "aws_instance" "my_instance" {
+  count = 2 # Number of instances to create/meta argument
   ami                    =  var.ec2_ami_id #"ami-04f7a54071e74f488"
   instance_type          = var.ec2_instance_type #"t2.micro"
   key_name               = aws_key_pair.my_key.key_name
@@ -70,6 +71,6 @@ resource "aws_instance" "my_instance" {
   }
 
   tags = {
-    Name = "TERRA-DEMO-SERVER"
+    Name = "automate-instance-${count.index + 1}"
   }
 }

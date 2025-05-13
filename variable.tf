@@ -4,7 +4,7 @@ variable "ec2_instance_type" {
 }
 
 variable "ec2_root_storage_size" {
-    default = 15
+    default = 8
     type = number
 
 }
